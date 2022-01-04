@@ -133,9 +133,10 @@ services:
       OPENID_JWKS_ENDPOINT: https://sso.lar.lincoln.ac.uk/auth/realms/lar/protocol/openid-connect/certs
       OPENID_ISSUER: https://sso.lar.lincoln.ac.uk/auth/realms/lar
       OPENID_CLIENT_ID: guacamole2
+      OPENID_USERNAME_CLAIM_TYPE: preferred_username
       OPENID_REDIRECT_URI: https://lcas.lincoln.ac.uk/cloud/
       #OPENID_REDIRECT_URI: https%3A%2F%2Flcas.lincoln.ac.uk%2Fcloud%2F
-      OPENID-GROUPS-CLAIM-TYPE: guacamole_groups
+      OPENID_GROUPS_CLAIM-TYPE: guacamole_groups
 
     image: guacamole/guacamole
     links:
