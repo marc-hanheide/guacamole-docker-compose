@@ -94,7 +94,7 @@ services:
   # guacd
   guacd:
     container_name: guacd_compose
-    image: guacamole/guacd
+    image: guacamole/guacd:1.4.0
     networks:
       guacnetwork_compose:
     restart: always
@@ -136,9 +136,12 @@ services:
       OPENID_USERNAME_CLAIM_TYPE: preferred_username
       OPENID_REDIRECT_URI: https://lcas.lincoln.ac.uk/cloud/
       #OPENID_REDIRECT_URI: https%3A%2F%2Flcas.lincoln.ac.uk%2Fcloud%2F
-      OPENID_GROUPS_CLAIM-TYPE: guacamole_groups
-
-    image: guacamole/guacamole
+      OPENID_GROUPS_CLAIM_TYPE: guacamole_groups
+      POSTGRESQL_AUTO_CREATE_ACCOUNTS: "true"
+    volumes:
+#      - ./.guacamole/guacamole.properties:/root/.guacamole/guacamole.properties:ro
+       - ./start.sh:/opt/guacamole/bin/start.sh:ro
+    image: guacamole/guacamole:1.4.0
     links:
     - guacd
     networks:
